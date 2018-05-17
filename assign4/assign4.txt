@@ -1,0 +1,47 @@
+Assign4: Due 11:59PM April 21
+
+Design and implement a program that will simulate an electronic circuit.
+A circuit may have different components, like AND, OR, NOT, etc.
+
+A NOT will take one input and produce one output, which is the negation of the 
+input. An AND will take two input and produce an output of 1 only if both the 
+input are 1; 0 otherwise. An OR will take two input and produce an output of 1 
+if either of the input is 1; 0 otherwise.
+
+If an input is unconnected to an output, its value can be set to 0 or 1 by the user. If no value is set, it's assumed to be 0.
+
+Design the program so the user can open an existing circuit or create a new 
+one. They can place components of different type (more types may be added 
+later) and connect them. The user can also click on a simulate button. When 
+the simulation is on, any unconnected output of any component on the circuit 
+should display the current state of the output. You may simulate the circuit 
+on a clock tick on 1-second interval.
+
+Total [100]:  74
+Program Compiles [10]:
+Works, able to create and simulate a circuit [10]: -2
+Program failed during execution, need to handle exceptions gracefully.
+:runui
+Exception in thread "AWT-EventQueue-0" java.lang.NumberFormatException: null
+        at java.lang.Integer.parseInt(Integer.java:542)
+        at java.lang.Integer.parseInt(Integer.java:615)
+        at circuit.ui.CircuitSimGUI$NewCircuitActionListener.actionPerformed(Cir
+...
+
+All Tests pass [20]:
+Test Quality [10]: 
+Code coverage [10]: -3
+
+Design Quality [10]: -1
+catch(Exception ex){
+	System.err.println(ex.getCause() + " " + ex.getMessage());
+}
+We don't print from arbitrary places, instead propagate exception to the UI layer so it can be either handled or a graceful message may be displayed.
+
+
+Code Quality [10]:
+
+GUI is extensible for new types of gates [10]: -10
+MenuActionListener fails OCP, if we add a new type of component we have to change this code.
+
+Save...open feature [10]: -10
